@@ -1,0 +1,51 @@
+.search_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 90%;
+  height: 58px;
+  margin: 20px;
+}
+
+.search_area > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search_input {
+  align-self: flex-start;
+  font-size: 18px;
+  color: black;
+  width: 74%;
+  height: 48px;
+  padding: 10px;
+  border: none;
+}
+
+.search_input:focus {
+  outline: 0;
+}
+
+.delete_button,
+.search_button {
+  background-color: transparent;
+  width: 50px;
+  height: 48px;
+  margin: 0px 10px;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+.search_icon {
+  width: 30px;
+  height: 30px;
+}
+
+.close_icon {
+  width: 34px;
+  height: 34px;
+}

@@ -3,5 +3,5 @@ export interface LoadImageType {
   alt: string;
   width: number;
   height: number;
-  className: string;
+  className?: string;
 }

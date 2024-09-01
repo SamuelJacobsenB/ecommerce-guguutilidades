@@ -14,7 +14,6 @@ const LoadImage = (props: LoadImageType) => {
       alt={props.alt}
       width={props.width}
       height={props.height}
-      placeholder="blur"
       className={
         loaded
           ? `disable_blur ${props.className}`
