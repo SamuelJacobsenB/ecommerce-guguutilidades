@@ -1,0 +1,16 @@
+.blur_image {
+  filter: blur(20px);
+}
+
+.disable_blur {
+  animation: disable_blur 1s linear;
+}
+
+@keyframes disable_blur {
+  from {
+    filter: blur(20px);
+  }
+  to {
+    filter: blur(0);
+  }
+}
