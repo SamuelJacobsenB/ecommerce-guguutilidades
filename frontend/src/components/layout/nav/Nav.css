@@ -1,0 +1,43 @@
+.nav_bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fef30e;
+  width: 100%;
+  height: 64px;
+  border-top: 1px solid #a26632;
+}
+
+.menu_icon {
+  margin-left: 100px;
+}
+
+.nav_user_area {
+  display: flex;
+  justify-content: right;
+  gap: 40px;
+  width: 50%;
+}
+
+.menu_icon,
+.cart_icon {
+  color: #b01a00;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menu_icon:hover,
+.cart_icon:hover {
+  color: #ec2300;
+}
+
+.user_icon {
+  color: #b01a00;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 50%;
+  border: 1px solid #b01a00;
+}

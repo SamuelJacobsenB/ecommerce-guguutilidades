@@ -1,8 +1,0 @@
-.side_box {
-  position: fixed;
-  background-color: #9c1800;
-  min-width: 500px;
-  width: 30vw;
-  height: 100vh;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.284);
-}
