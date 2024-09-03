@@ -1,0 +1,25 @@
+.side_box_menu {
+  flex-direction: column;
+}
+
+.menu_link {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  color: #dacf00;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+.menu_icon_box {
+  color: #dacf00;
+  width: 26px;
+  height: 26px;
+}
+
+.menu_link:hover {
+  text-decoration: underline;
+  background-color: #af1a00;
+}

@@ -19,6 +19,7 @@
   width: 50%;
 }
 
+.user_icon,
 .menu_icon,
 .cart_icon {
   color: #b01a00;
@@ -31,13 +32,4 @@
 .menu_icon:hover,
 .cart_icon:hover {
   color: #ec2300;
-}
-
-.user_icon {
-  color: #b01a00;
-  width: 44px;
-  height: 44px;
-  padding: 8px;
-  border-radius: 50%;
-  border: 1px solid #b01a00;
 }

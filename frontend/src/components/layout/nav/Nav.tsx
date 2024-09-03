@@ -1,13 +1,12 @@
 'use client';
 
-import { IoMenu } from 'react-icons/io5';
-import { IoCart } from 'react-icons/io5';
-import { IoPerson } from 'react-icons/io5';
+import { IoMenu, IoCart } from 'react-icons/io5';
+import { MdAccountCircle } from 'react-icons/md';
 import './Nav.css';
 
 const Nav = () => {
   const setMenuVisible = () => {
-    document.querySelector('.disable')?.classList.remove('disable');
+    document.querySelector('.side_box_menu')?.classList.remove('disable');
   };
 
   return (
@@ -17,7 +16,7 @@ const Nav = () => {
       </div>
       <div className="nav_user_area">
         <IoCart className="cart_icon" />
-        <IoPerson className="user_icon" />
+        <MdAccountCircle className="user_icon" />
       </div>
     </nav>
   );
