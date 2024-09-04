@@ -1,6 +1,115 @@
+.disable {
+  display: none;
+}
+
 .home_title {
+  background-color: white;
   font-size: 42px;
   text-align: center;
   color: #9c1800;
-  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.filter_content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+.filter_icons {
+  font-size: 24px;
+  color: #9c1800;
+}
+
+.filter_form {
+  background-color: #9c1800;
+  width: 100%;
+  margin-top: 10px;
+  padding: 40px;
+}
+
+.filter_form_area {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  color: #fef30e;
+  width: 100%;
+  padding: 16px;
+}
+
+.filter_input {
+  font-size: 18px;
+  width: 100%;
+  padding: 10px;
+}
+
+.filter_btn {
+  font-size: 18px;
+  background-color: #fef20e;
+  color: #9c1800;
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.filter_btn:hover {
+  background-color: #fff200;
+  color: #de2100;
+}
+
+.product_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.home_product {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 240px;
+  height: 360px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.093);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.home_product:hover {
+  color: rgb(87, 87, 255);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.227);
+}
+
+.product_name {
+  text-align: left;
+  width: 100%;
+  padding-left: 10px;
+  margin-top: 6%;
+}
+
+.product_price {
+  text-align: left;
+  font-size: 26px;
+  width: 100%;
+  padding-left: 10px;
 }

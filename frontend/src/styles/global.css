@@ -5,6 +5,6 @@
   border: none;
 }
 
-.disable {
-  display: none;
+body {
+  background-color: #ebebeb;
 }

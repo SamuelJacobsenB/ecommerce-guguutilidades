@@ -13,13 +13,9 @@ const SideBox = (props: SideBoxType) => {
   };
 
   return (
-    <div
-      className={`side_box disable ${props.className}`}
-      onClick={handleCloseSideBox}
-      ref={SideBoxDiv}
-    >
+    <div className={`side_box disable ${props.className}`} ref={SideBoxDiv}>
       <div className="close_side_box_area">
-        <IoClose className="close_side_box_icon" />
+        <IoClose className="close_side_box_icon" onClick={handleCloseSideBox} />
       </div>
       <div className="side_box_content">{props.children}</div>
     </div>

@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/global.css';
-import Header from './../components/layout/header/Header';
-import Nav from './../components/layout/nav/Nav';
-import SideMenu from '@/components/others/SideBoxes/SideMenu/SideMenu';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,14 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className}`}>
-        <Header />
-        <Nav />
-        <div className="interactive_boxes">
-          <SideMenu />
-        </div>
-        <div>{children}</div>
-      </body>
+      <body className={`${inter.className}`}>{children}</body>
     </html>
   );
 }
