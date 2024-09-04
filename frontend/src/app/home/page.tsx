@@ -27,6 +27,38 @@ const Home = () => {
     'decoration',
   ];
 
+  const filterProducts = (evt: any) => {
+    evt.preventDefault();
+
+    let correctProducts: Product[] = [];
+
+    if (minPrice) {
+      products.map((product: Product) => {
+        if (product.price >= Number(minPrice)) {
+          correctProducts.push(product);
+        }
+      });
+    }
+
+    if (maxPrice) {
+      products.map((product: Product) => {
+        if (product.price <= Number(maxPrice)) {
+          correctProducts.push(product);
+        }
+      });
+    }
+
+    if (category) {
+      products.map((product: Product) => {
+        if (product.category == category) {
+          correctProducts.push(product);
+        }
+      });
+    }
+
+    setProducts(correctProducts);
+  };
+
   const getProducts = useCallback(async () => {
     const allProducts: Product[] | undefined = await getAllProducts();
     if (allProducts) setProducts(allProducts);
@@ -54,7 +86,10 @@ const Home = () => {
             </div>
 
             <div className={filterVisible ? 'filters' : 'filters disable'}>
-              <form className="filter_form">
+              <form
+                className="filter_form"
+                onSubmit={(evt) => filterProducts(evt)}
+              >
                 <div className="filter_form_area">
                   <label htmlFor="min">Preço mínimo: </label>
                   <input
@@ -96,7 +131,9 @@ const Home = () => {
                     })}
                   </select>
                 </div>
-                <button className="filter_btn">Cadastrar filtro</button>
+                <button type="submit" className="filter_btn">
+                  Cadastrar filtro
+                </button>
               </form>
             </div>
           </div>
