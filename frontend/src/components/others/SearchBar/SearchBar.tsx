@@ -43,20 +43,22 @@ const SearchBar = (props: SearchType) => {
           value={searchValue}
           onChange={(evt) => setSearchValue(evt.target.value)}
         />
-        <button
-          type="reset"
-          className="delete_button"
-          onClick={handleResetSearchValue}
-        >
-          <IoClose className="close_icon" />
-        </button>
-        <button
-          type="submit"
-          className="search_button"
-          onClick={(evt) => handleSearchProducts(evt)}
-        >
-          <IoSearch className="search_icon" />
-        </button>
+        <div className="search_btn_area">
+          <button
+            type="reset"
+            className="delete_button"
+            onClick={handleResetSearchValue}
+          >
+            <IoClose className="close_icon" />
+          </button>
+          <button
+            type="submit"
+            className="search_button"
+            onClick={(evt) => handleSearchProducts(evt)}
+          >
+            <IoSearch className="search_icon" />
+          </button>
+        </div>
       </form>
     </div>
   );
