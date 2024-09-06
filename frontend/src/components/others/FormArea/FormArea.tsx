@@ -12,6 +12,8 @@ const FormArea = (props: FormAreaType) => {
         placeholder={props.inputPlaceholder}
         value={props.value}
         onChange={(evt) => props.setValue(evt.target.value)}
+        minLength={props.minLength}
+        required
       />
     </div>
   );

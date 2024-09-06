@@ -5,6 +5,7 @@ export interface FormAreaType {
   type: string;
   labelText: string;
   inputPlaceholder: string;
+  minLength?: number;
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
 }

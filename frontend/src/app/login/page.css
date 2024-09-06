@@ -1,4 +1,4 @@
-.signup_area {
+.login_area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
   height: 100vh;
 }
 
-.signup_box {
+.login_box {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -23,19 +23,15 @@
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.164);
 }
 
-.signup_box > h1 {
+.login_box > h1 {
   font-size: 40px;
   text-align: center;
   color: #dfd409;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.209);
 }
 
-.signup_form {
-  display: none;
+.login_form {
   width: 100%;
+  margin-top: 80px;
   padding: 10px;
-}
-
-.google_area {
-  margin-top: 50px;
 }
