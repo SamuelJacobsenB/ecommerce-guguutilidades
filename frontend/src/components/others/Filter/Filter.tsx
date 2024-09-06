@@ -5,7 +5,7 @@ import { Product } from '@/types/ProductType';
 import './Filter.css';
 
 const Filter = (props: FilterType) => {
-  const { fixedProducts, products, setProducts }: FilterType = props;
+  const { fixedProducts, setProducts }: FilterType = props;
 
   const [minPrice, setMinPrice] = useState<string>();
   const [maxPrice, setMaxPrice] = useState<string>();
@@ -26,8 +26,7 @@ const Filter = (props: FilterType) => {
   const filterProducts = (evt: any) => {
     evt.preventDefault();
 
-    setProducts(fixedProducts);
-    let correctProducts: Product[] = products;
+    let correctProducts: Product[] = fixedProducts;
 
     if (minPrice) {
       correctProducts = correctProducts.filter(
