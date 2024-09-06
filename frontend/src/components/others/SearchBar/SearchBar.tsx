@@ -17,9 +17,11 @@ const SearchBar = (props: SearchType) => {
     let correctProducts: Product[] = fixedProducts;
 
     if (searchValue) {
-      correctProducts = correctProducts.filter((product: Product) =>
-        searchValue.toLowerCase().includes(product.name.toLowerCase()),
-      );
+      correctProducts = correctProducts.filter((product: Product) => {
+        if (product.name.toLowerCase().includes(searchValue.toLowerCase())) {
+          return product;
+        }
+      });
     }
 
     setProducts(correctProducts);

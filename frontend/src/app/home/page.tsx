@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <HomeLayout />
+      <HomeLayout fixedProducts={fixedProducts} setProducts={setProducts} />
       <h1 className="home_title">Seja bem vindo(a)</h1>
 
       <div className="products">
