@@ -9,11 +9,15 @@ import { Product } from '@/types/ProductType';
 import './page.css';
 
 const Home = () => {
+  const [fixedProducts, setFixedProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
   const getProducts = useCallback(async () => {
     const allProducts: Product[] | undefined = await getAllProducts();
-    if (allProducts) setProducts(allProducts);
+    if (allProducts) {
+      setFixedProducts(allProducts);
+      setProducts(allProducts);
+    }
   }, []);
 
   useEffect(() => {
@@ -26,7 +30,11 @@ const Home = () => {
       <h1 className="home_title">Seja bem vindo(a)</h1>
 
       <div className="products">
-        <Filter products={products} setProducts={setProducts} />
+        <Filter
+          products={products}
+          setProducts={setProducts}
+          fixedProducts={fixedProducts}
+        />
         <div className="product_list">
           {products.map((product: Product) => {
             const { id, picture, name, price } = product;

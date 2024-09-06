@@ -5,7 +5,7 @@ import { Product } from '@/types/ProductType';
 import './Filter.css';
 
 const Filter = (props: FilterType) => {
-  const { products, setProducts } = props;
+  const { fixedProducts, products, setProducts }: FilterType = props;
 
   const [minPrice, setMinPrice] = useState<string>();
   const [maxPrice, setMaxPrice] = useState<string>();
@@ -26,25 +26,35 @@ const Filter = (props: FilterType) => {
   const filterProducts = (evt: any) => {
     evt.preventDefault();
 
-    let correctProducts: Product[] = [];
+    setProducts(fixedProducts);
+    let correctProducts: Product[] = products;
 
-    products.map((product: Product) => {
-      if (product.price >= Number(minPrice)) {
-        correctProducts.push(product);
-      }
+    if (minPrice) {
+      correctProducts = correctProducts.filter(
+        (product: Product) => product.price >= Number(minPrice),
+      );
+    }
 
-      if (product.price <= Number(maxPrice)) {
-        correctProducts.push(product);
-      }
+    if (maxPrice) {
+      correctProducts = correctProducts.filter(
+        (product: Product) => product.price <= Number(maxPrice),
+      );
+    }
 
-      if (product.category == category) {
-        correctProducts.push(product);
-      }
-    });
-
-    console.log(correctProducts);
+    if (category && category != 'all') {
+      correctProducts = correctProducts.filter(
+        (product: Product) => product.category == category,
+      );
+    }
 
     setProducts(correctProducts);
+  };
+
+  const handleResetFilter = () => {
+    setProducts(fixedProducts);
+    setMinPrice('0');
+    setMaxPrice('0');
+    setCategory('all');
   };
 
   return (
@@ -98,7 +108,14 @@ const Filter = (props: FilterType) => {
               </select>
             </div>
             <button type="submit" className="filter_btn">
-              Cadastrar filtro
+              Cadastrar filtros
+            </button>
+            <button
+              type="reset"
+              className="clear_filter_btn"
+              onClick={handleResetFilter}
+            >
+              Limpar filtros
             </button>
           </form>
         </div>
