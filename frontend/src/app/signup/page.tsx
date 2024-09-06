@@ -72,7 +72,7 @@ const SignUp = () => {
   return (
     <div className="signup_area">
       <div className="signup_box">
-        <BackToHome />
+        <BackToHome className="signup_back" />
         <h1>Crie uma conta com o Google:</h1>
 
         <div className="google_area" ref={googleArea}>

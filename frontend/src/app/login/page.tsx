@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <div className="login_area">
       <div className="login_box">
-        <BackToHome />
+        <BackToHome className="login_back" />
         <h1>Faça o seu login:</h1>
         <form className="login_form" onSubmit={(evt) => handleSubmit(evt)}>
           <FormArea

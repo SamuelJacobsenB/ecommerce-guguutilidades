@@ -1,8 +1,6 @@
 .link_arrow_back {
   display: flex;
   justify-content: left;
-  width: 100%;
-  margin-bottom: 20px;
 }
 
 .arrow_back {
