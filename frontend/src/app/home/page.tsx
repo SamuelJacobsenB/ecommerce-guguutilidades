@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import HomeLayout from '@/components/layout/HomeLayout';
 import getAllProducts from '@/functions/getAllProducts';
 import Filter from '@/components/others/Filter/Filter';
@@ -9,6 +10,8 @@ import { Product } from '@/types/ProductType';
 import './page.css';
 
 const Home = () => {
+  const router = useRouter();
+
   const [fixedProducts, setFixedProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -36,7 +39,11 @@ const Home = () => {
             const { id, picture, name, price } = product;
 
             return (
-              <div className="home_product" key={Number(id)}>
+              <div
+                className="home_product"
+                key={Number(id)}
+                onClick={() => router.push(`product/${id}`)}
+              >
                 <LoadImage src={picture} alt={name} width={180} height={260} />
                 <h3 className="product_name">{name}</h3>
                 <big className="product_price">R$ {price.toFixed(2)}</big>

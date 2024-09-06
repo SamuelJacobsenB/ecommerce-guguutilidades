@@ -1,0 +1,19 @@
+.product_info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product_info > h1 {
+  text-align: center;
+  font-size: 36px;
+}
+
+.product_info > p {
+  text-align: justify;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 800px) {
+}

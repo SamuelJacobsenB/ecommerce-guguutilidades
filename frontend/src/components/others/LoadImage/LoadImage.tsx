@@ -19,7 +19,7 @@ const LoadImage = (props: LoadImageType) => {
           ? `disable_blur ${props.className}`
           : `blur_image ${props.className}`
       }
-      onLoadingComplete={() => setLoaded(true)}
+      onLoad={() => setLoaded(true)}
     />
   );
 };

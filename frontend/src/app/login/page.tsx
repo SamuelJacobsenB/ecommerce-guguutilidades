@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import BackToHome from '@/components/others/BackToHome/BackToHome';
 import FormArea from '@/components/others/FormArea/FormArea';
 import Button from '@/components/others/Button/Button';
 import api from '@/services/api';
@@ -34,6 +35,7 @@ const Login = () => {
   return (
     <div className="login_area">
       <div className="login_box">
+        <BackToHome />
         <h1>Faça o seu login:</h1>
         <form className="login_form" onSubmit={(evt) => handleSubmit(evt)}>
           <FormArea
