@@ -7,6 +7,8 @@ const FormArea = (props: FormAreaType) => {
       <label htmlFor={props.name}>{props.labelText}</label>
       <input
         type={props.type}
+        name={props.name}
+        id={props.name}
         placeholder={props.inputPlaceholder}
         value={props.value}
         onChange={(evt) => props.setValue(evt.target.value)}

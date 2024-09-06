@@ -1,5 +1,5 @@
 type btnType = 'submit' | 'reset' | 'button';
-type colorType = 'blue' | 'red';
+type colorType = 'blue' | 'red' | 'yellow';
 
 export interface ButtonType {
   colorType: colorType;

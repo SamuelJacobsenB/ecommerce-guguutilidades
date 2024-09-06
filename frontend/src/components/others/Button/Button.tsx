@@ -5,7 +5,7 @@ const Button = (props: ButtonType) => {
   return (
     <button
       type={props.type}
-      className={`btn ${(props.colorType, props.className)} `}
+      className={`btn ${props.colorType} ${props.className}`}
     >
       {props.children}
     </button>

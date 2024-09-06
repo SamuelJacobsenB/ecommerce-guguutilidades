@@ -14,7 +14,7 @@ const SignUp = () => {
       <div className="signup_box">
         <h1>Crie uma conta com o Google:</h1>
 
-        <form>
+        <form className="signup_form">
           <FormArea
             name="password"
             type="password"
@@ -27,11 +27,11 @@ const SignUp = () => {
             name="check_password"
             type="password"
             labelText="Digite novamente: "
-            inputPlaceholder="Insira novamente sua senha"
+            inputPlaceholder="Reescreva sua senha"
             value={checkPassword}
             setValue={setCheckPassword}
           />
-          <Button type="submit" colorType="blue">
+          <Button type="submit" colorType="yellow">
             Cadastrar-se
           </Button>
         </form>

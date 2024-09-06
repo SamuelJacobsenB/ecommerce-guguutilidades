@@ -1,0 +1,36 @@
+.signup_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/imgs/fundo-amarelo.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.signup_box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 40vw;
+  min-width: 480px;
+  height: 580px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.164);
+}
+
+.signup_box > h1 {
+  font-size: 40px;
+  text-align: center;
+  color: #dfd409;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.209);
+}
+
+.signup_form {
+  width: 100%;
+  padding: 10px;
+}
