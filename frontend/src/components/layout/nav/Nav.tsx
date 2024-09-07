@@ -1,16 +1,18 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { IoMenu, IoCart } from 'react-icons/io5';
 import { MdAccountCircle } from 'react-icons/md';
 import userVerify from '@/functions/userVerify';
 import getUserById from '@/functions/getUserById';
 import './Nav.css';
 import { jwtDecode } from 'jwt-decode';
-import { User } from '@/types/UserType';
 import LoadImage from './../../others/LoadImage/LoadImage';
 
 const Nav = () => {
+  const router = useRouter();
+
   const [picture, setPicture] = useState<string>('');
 
   const setMenuVisible = () => {
@@ -53,13 +55,14 @@ const Nav = () => {
         <div className="user_icon_area">
           <MdAccountCircle
             className={picture != '' ? 'disable' : 'user_icon'}
+            onClick={() => router.push('/login')}
           />
           <LoadImage
             src={picture}
             alt="user_image"
-            width={40}
-            height={40}
-            className={picture == '' ? 'disable' : 'user_icon'}
+            width={44}
+            height={44}
+            className={picture == '' ? 'disable' : 'user_icon profile_image'}
           />
         </div>
       </div>

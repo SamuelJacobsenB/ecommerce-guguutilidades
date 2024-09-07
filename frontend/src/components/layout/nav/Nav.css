@@ -33,13 +33,13 @@
   transition: 0.2s;
 }
 
+.user_icon:hover,
 .menu_icon:hover,
 .cart_icon:hover {
   color: #ec2300;
 }
 
-.user_icon_area {
-  width: 40px;
-  height: 40px;
+.profile_image {
   border-radius: 50%;
+  border: 1px solid #b01a006c;
 }
