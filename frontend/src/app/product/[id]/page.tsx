@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Product } from '@/types/ProductType';
 import { Category } from '@/types/CategoryType';
 import LoadImage from '@/components/others/LoadImage/LoadImage';
@@ -9,11 +9,15 @@ import { IoChevronBack } from 'react-icons/io5';
 import { FaCartPlus } from 'react-icons/fa';
 import Link from 'next/link';
 import getProductById from '@/functions/getProductById';
+import userVerify from '@/functions/userVerify';
+import updateUserCart from '@/functions/updateUserCart';
 import './page.css';
 
 const ProductInformations = () => {
+  const router = useRouter();
   const params = useParams();
 
+  const [id, setId] = useState<number>();
   const [picture, setPicture] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -24,6 +28,7 @@ const ProductInformations = () => {
     if (typeof params.id == 'string') {
       const product: Product = await getProductById(params.id);
 
+      setId(product.id);
       setPicture(product.picture);
       setName(product.name);
       setDescription(product.description);
@@ -31,6 +36,34 @@ const ProductInformations = () => {
       setCategory(product.category);
     }
   }, []);
+
+  const addToCart = async () => {
+    const token: string | null = localStorage.getItem('token');
+
+    if (token) {
+      const verify: any = await userVerify(token);
+      if (verify.error_msg) {
+        localStorage.removeItem('token');
+        router.push('/login');
+      } else {
+        if (id) {
+          await updateUserCart(id.toString(), token)
+            .then((res: any) => {
+              if (res.error_msg) {
+                console.log('Error');
+              } else {
+                router.push('/home');
+              }
+            })
+            .catch(() => {
+              console.log('Error');
+            });
+        }
+      }
+    } else {
+      router.push('/login');
+    }
+  };
 
   useEffect(() => {
     getProduct();
@@ -55,7 +88,7 @@ const ProductInformations = () => {
           <small>Categoria: {category}</small>
         </div>
       </div>
-      <div className="add_to_cart">
+      <div className="add_to_cart" onClick={addToCart}>
         <FaCartPlus className="add_to_cart_icon" /> Adicionar ao carrinho
       </div>
     </div>

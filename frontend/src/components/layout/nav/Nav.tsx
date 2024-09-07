@@ -1,25 +1,19 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoMenu, IoCart } from 'react-icons/io5';
 import { MdAccountCircle } from 'react-icons/md';
 import userVerify from '@/functions/userVerify';
-import getUserById from '@/functions/getUserById';
-import './Nav.css';
-import { jwtDecode } from 'jwt-decode';
 import LoadImage from './../../others/LoadImage/LoadImage';
+import './Nav.css';
 
-const Nav = () => {
+const Nav = ({ picture }: { picture: string }) => {
   const router = useRouter();
 
-  const [picture, setPicture] = useState<string>('');
-
-  const setMenuVisible = () => {
+  const setMenuVisible = () =>
     document.querySelector('.side_box_menu')?.classList.remove('disable');
-  };
 
-  const verify = useCallback(async () => {
+  const setVisibleSideCart = async () => {
     const token: string | null = localStorage.getItem('token');
     if (token) {
       const res: any = await userVerify(token);
@@ -27,23 +21,12 @@ const Nav = () => {
       if (res.error_msg) {
         console.log(res.error_msg);
       } else {
-        const { id }: any = jwtDecode(token);
-        await getUserById(token, id)
-          .then((res) => {
-            setPicture(res.picture);
-          })
-          .catch(() => {
-            console.log('Erro');
-          });
+        document.querySelector('.side_cart')?.classList.remove('disable');
       }
     } else {
-      console.log('Token não encontrado');
+      console.log('Você deve estar logado');
     }
-  }, []);
-
-  useEffect(() => {
-    verify();
-  }, []);
+  };
 
   return (
     <nav className="nav_bar">
@@ -51,10 +34,10 @@ const Nav = () => {
         <IoMenu className="menu_icon" onClick={setMenuVisible} />
       </div>
       <div className="nav_user_area">
-        <IoCart className="cart_icon" />
+        <IoCart className="cart_icon" onClick={setVisibleSideCart} />
         <div className="user_icon_area">
           <MdAccountCircle
-            className={picture != '' ? 'disable' : 'user_icon'}
+            className={picture ? 'disable' : 'user_icon'}
             onClick={() => router.push('/login')}
           />
           <LoadImage
@@ -62,7 +45,7 @@ const Nav = () => {
             alt="user_image"
             width={44}
             height={44}
-            className={picture == '' ? 'disable' : 'user_icon profile_image'}
+            className={!picture ? 'disable' : 'user_icon profile_image'}
           />
         </div>
       </div>

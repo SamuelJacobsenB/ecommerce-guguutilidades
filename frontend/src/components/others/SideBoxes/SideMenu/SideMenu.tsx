@@ -15,9 +15,15 @@ const SideMenu = () => {
       <Link href={`/login`} className="menu_link">
         <IoLogIn className="menu_icon_box" /> Entrar
       </Link>
-      <Link href={`/logout`} className="menu_link">
+      <div
+        className="menu_link"
+        onClick={() => {
+          localStorage.removeItem('token');
+          window.location.reload();
+        }}
+      >
         <IoLogOut className="menu_icon_box" /> Sair
-      </Link>
+      </div>
       <Link href={`/about`} className="menu_link">
         <IoMail className="menu_icon_box" /> Sobre nós
       </Link>
