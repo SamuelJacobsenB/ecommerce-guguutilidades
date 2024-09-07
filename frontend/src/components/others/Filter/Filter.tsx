@@ -101,8 +101,12 @@ const Filter = (props: FilterType) => {
                 className="select_categry filter_input"
                 onChange={(evt) => setCategory(evt.target.value)}
               >
-                {categories.map((categorie) => {
-                  return <option value="categorie">{categorie}</option>;
+                {categories.map((categorie, i) => {
+                  return (
+                    <option value="categorie" key={i}>
+                      {categorie}
+                    </option>
+                  );
                 })}
               </select>
             </div>

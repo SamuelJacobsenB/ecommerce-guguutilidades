@@ -31,26 +31,23 @@ const Home = () => {
     <div className="home">
       <HomeLayout fixedProducts={fixedProducts} setProducts={setProducts} />
       <h1 className="home_title">Seja bem vindo(a)</h1>
+      <Filter setProducts={setProducts} fixedProducts={fixedProducts} />
+      <div className="product_list">
+        {products.map((product: Product, i) => {
+          const { id, picture, name, price } = product;
 
-      <div className="products">
-        <Filter setProducts={setProducts} fixedProducts={fixedProducts} />
-        <div className="product_list">
-          {products.map((product: Product) => {
-            const { id, picture, name, price } = product;
-
-            return (
-              <div
-                className="home_product"
-                key={Number(id)}
-                onClick={() => router.push(`product/${id}`)}
-              >
-                <LoadImage src={picture} alt={name} width={180} height={260} />
-                <h3 className="product_name">{name}</h3>
-                <big className="product_price">R$ {price.toFixed(2)}</big>
-              </div>
-            );
-          })}
-        </div>
+          return (
+            <div
+              className="home_product"
+              key={Number(id)}
+              onClick={() => router.push(`product/${id}`)}
+            >
+              <LoadImage src={picture} alt={name} width={180} height={260} />
+              <h3 className="product_name">{name}</h3>
+              <big className="product_price">R$ {price.toFixed(2)}</big>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

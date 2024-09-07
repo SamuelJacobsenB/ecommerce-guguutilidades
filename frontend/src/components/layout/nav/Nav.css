@@ -1,3 +1,7 @@
+.disable {
+  display: none;
+}
+
 .nav_bar {
   display: flex;
   justify-content: space-around;
@@ -32,4 +36,10 @@
 .menu_icon:hover,
 .cart_icon:hover {
   color: #ec2300;
+}
+
+.user_icon_area {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
