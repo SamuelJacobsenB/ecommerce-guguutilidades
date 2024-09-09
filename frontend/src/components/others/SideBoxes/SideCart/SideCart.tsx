@@ -27,7 +27,9 @@ const SideCart = (props: CartType) => {
         {cart?.map((cartItem: string) => {
           const itemParts: string[] = cartItem.split(':');
           const id: number = Number(itemParts[0]);
-          const quantity: number = Number(itemParts[1]);
+          const [quantity, setQuantity] = useState<number>(
+            Number(itemParts[1]),
+          );
 
           const product: Product[] | undefined = fixedProducts.filter(
             (product: Product) => product.id == id,
@@ -35,15 +37,16 @@ const SideCart = (props: CartType) => {
 
           const { picture, name, price }: Product = product[0];
 
+          const [waitImage, setWaitImage] = useState<boolean>(true);
+          setTimeout(() => setWaitImage(false), 500);
+
           return (
             <div className="cart_product" key={id}>
-              <LoadImage
-                src={picture}
-                alt={name}
-                width={120}
-                height={180}
-                className={picture.length > 0 ? '' : 'disable'}
-              />
+              {waitImage ? (
+                'Loading'
+              ) : (
+                <LoadImage src={picture} alt={name} width={120} height={180} />
+              )}
 
               <div className="cart_info">
                 <div className="top_informations">
@@ -53,9 +56,19 @@ const SideCart = (props: CartType) => {
                 <div className="down_informations">
                   <big>R$ {price.toFixed(2)}</big>
                   <div className="cart_quantity_area">
-                    <IoRemoveCircle className="quantity_cart_btn" />
+                    <IoRemoveCircle
+                      className="quantity_cart_btn"
+                      onClick={() => {
+                        if (quantity != 1) {
+                          setQuantity(quantity - 1);
+                        }
+                      }}
+                    />
                     <small>{quantity}</small>
-                    <IoAddCircle className="quantity_cart_btn" />
+                    <IoAddCircle
+                      className="quantity_cart_btn"
+                      onClick={() => setQuantity(quantity + 1)}
+                    />
                   </div>
                 </div>
               </div>

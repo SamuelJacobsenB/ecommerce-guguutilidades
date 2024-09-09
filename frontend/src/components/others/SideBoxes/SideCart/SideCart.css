@@ -61,7 +61,7 @@
 
 .top_informations {
   display: flex;
-  font-size: 26px;
+  font-size: 28px;
 }
 
 .remove_product {
@@ -78,7 +78,7 @@
 }
 
 .down_informations > big {
-  font-size: 32px;
+  font-size: 34px;
   text-decoration: underline;
 }
 
