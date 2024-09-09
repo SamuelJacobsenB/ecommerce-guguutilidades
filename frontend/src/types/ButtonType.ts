@@ -4,6 +4,6 @@ type colorType = 'blue' | 'red' | 'yellow';
 export interface ButtonType {
   colorType: colorType;
   type: btnType;
-  children: string;
+  children: string | React.ReactNode;
   className?: string;
 }

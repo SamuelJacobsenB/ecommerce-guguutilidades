@@ -10,8 +10,10 @@ import './Nav.css';
 const Nav = ({ picture }: { picture: string }) => {
   const router = useRouter();
 
-  const setMenuVisible = () =>
+  const setMenuVisible = () => {
+    document.querySelector('.side_cart')?.classList.add('disable');
     document.querySelector('.side_box_menu')?.classList.remove('disable');
+  };
 
   const setVisibleSideCart = async () => {
     const token: string | null = localStorage.getItem('token');
@@ -21,6 +23,7 @@ const Nav = ({ picture }: { picture: string }) => {
       if (res.error_msg) {
         console.log(res.error_msg);
       } else {
+        document.querySelector('.side_box_menu')?.classList.add('disable');
         document.querySelector('.side_cart')?.classList.remove('disable');
       }
     } else {

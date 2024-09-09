@@ -12,7 +12,7 @@ import { SearchType } from '@/types/SearchType';
 
 const HomeLayout = (props: SearchType) => {
   const [picture, setPicture] = useState<string>('');
-  const [cart, setCart] = useState<string | null>();
+  const [cart, setCart] = useState<string>();
 
   const verify = useCallback(async () => {
     const token: string | null = localStorage.getItem('token');
@@ -39,7 +39,7 @@ const HomeLayout = (props: SearchType) => {
 
   useEffect(() => {
     verify();
-  }, []);
+  }, [verify]);
 
   return (
     <>
@@ -50,7 +50,7 @@ const HomeLayout = (props: SearchType) => {
       <Nav picture={picture} />
       <div className="interactive_boxes">
         <SideMenu />
-        <SideCart cart={cart} />
+        {cart && <SideCart cart={cart} fixedProducts={props.fixedProducts} />}
       </div>
     </>
   );
