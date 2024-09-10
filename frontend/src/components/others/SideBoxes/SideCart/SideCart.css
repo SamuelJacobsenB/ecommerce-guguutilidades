@@ -48,6 +48,7 @@
   background-color: white;
   width: 90%;
   height: 220px;
+  margin: 30px;
   padding: 10px;
   border-radius: 8px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.259);
@@ -96,4 +97,53 @@
 
 .quantity_cart_btn {
   cursor: pointer;
+}
+
+.buy_products_area {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #dacf00;
+  min-width: 500px;
+  width: 30vw;
+  height: 120px;
+}
+
+.cart_total_price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  text-decoration: underline;
+  color: #b30600;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #a26632;
+}
+
+.btn_buy_all_cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: transparent;
+  font-size: 30px;
+  color: #b30600;
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.buy_add_cart {
+  width: 40px;
+  height: 40px;
+}
+
+.btn_buy_all_cart:hover {
+  background-color: #fff200;
+  text-decoration: underline;
 }

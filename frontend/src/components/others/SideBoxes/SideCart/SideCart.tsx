@@ -1,19 +1,59 @@
 'use client';
 
-import { useState, useRef, ReactNode } from 'react';
-import { IoClose, IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { IoClose, IoAddCircle, IoAdd, IoRemoveCircle } from 'react-icons/io5';
 import { CartType } from '@/types/CartType';
 import { Product } from '@/types/ProductType';
 import LoadImage from '../../LoadImage/LoadImage';
 import './SideCart.css';
 
 const SideCart = (props: CartType) => {
+  const [totalPrice, setTotalPrice] = useState<number>();
+
   const fixedProducts: Product[] = props.fixedProducts;
   const cart: string[] | undefined = props.cart?.split(';');
   const SideCartDiv: any = useRef();
 
   const handleCloseSideCart = (): void =>
     SideCartDiv.current.classList.add('disable');
+
+  const setPrice = useCallback(() => {
+    const HTMLprices: NodeListOf<Element> =
+      document.querySelectorAll('.price_cart');
+    const HTMLquantities: NodeListOf<Element> =
+      document.querySelectorAll('.quantity');
+
+    const prices: number[] = [];
+    const quantities: number[] = [];
+
+    HTMLprices.forEach((HTMLprice: Element) =>
+      prices.push(Number(HTMLprice.innerHTML.split(' ')[1])),
+    );
+
+    HTMLquantities.forEach((HTMLquantity: Element) =>
+      quantities.push(Number(HTMLquantity.innerHTML)),
+    );
+    console.log(quantities, HTMLquantities[0].innerHTML);
+
+    const priceWithQuantity: number[] = [];
+
+    prices.map((price: number, i: number) => {
+      const realPrice: number = price * quantities[i];
+
+      priceWithQuantity.push(realPrice);
+    });
+
+    const total: number = priceWithQuantity.reduce(
+      (accumulator: number, price: number) => accumulator + price,
+      0,
+    );
+
+    setTotalPrice(total);
+  }, []);
+
+  useEffect(() => {
+    setPrice();
+  }, []);
 
   return (
     <div className={`side_cart disable`} ref={SideCartDiv}>
@@ -37,16 +77,9 @@ const SideCart = (props: CartType) => {
 
           const { picture, name, price }: Product = product[0];
 
-          const [waitImage, setWaitImage] = useState<boolean>(true);
-          setTimeout(() => setWaitImage(false), 500);
-
           return (
             <div className="cart_product" key={id}>
-              {waitImage ? (
-                'Loading'
-              ) : (
-                <LoadImage src={picture} alt={name} width={120} height={180} />
-              )}
+              <LoadImage src={picture} alt={name} width={120} height={180} />
 
               <div className="cart_info">
                 <div className="top_informations">
@@ -54,20 +87,24 @@ const SideCart = (props: CartType) => {
                   <IoClose className="remove_product" />
                 </div>
                 <div className="down_informations">
-                  <big>R$ {price.toFixed(2)}</big>
+                  <big className="price_cart">R$ {price.toFixed(2)}</big>
                   <div className="cart_quantity_area">
                     <IoRemoveCircle
                       className="quantity_cart_btn"
                       onClick={() => {
                         if (quantity != 1) {
                           setQuantity(quantity - 1);
+                          setTimeout(() => setPrice(), 100);
                         }
                       }}
                     />
-                    <small>{quantity}</small>
+                    <small className="quantity">{quantity}</small>
                     <IoAddCircle
                       className="quantity_cart_btn"
-                      onClick={() => setQuantity(quantity + 1)}
+                      onClick={() => {
+                        setQuantity(quantity + 1);
+                        setTimeout(() => setPrice(), 100);
+                      }}
                     />
                   </div>
                 </div>
@@ -75,6 +112,13 @@ const SideCart = (props: CartType) => {
             </div>
           );
         })}
+
+        <div className="buy_products_area">
+          <h2 className="cart_total_price">Preço total: R$ {totalPrice}</h2>
+          <button className="btn_buy_all_cart">
+            <IoAdd className="buy_add_cart" /> Finalizar pedido
+          </button>
+        </div>
       </div>
     </div>
   );
