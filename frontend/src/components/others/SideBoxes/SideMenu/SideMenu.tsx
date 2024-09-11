@@ -1,9 +1,34 @@
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import SideBox from '../SideBox';
-import { IoHome, IoAdd, IoLogIn, IoLogOut, IoMail } from 'react-icons/io5';
+import {
+  IoHome,
+  IoAdd,
+  IoLogIn,
+  IoLogOut,
+  IoMail,
+  IoPerson,
+} from 'react-icons/io5';
+import adminVerify from '@/functions/adminVerify';
 import './SideMenu.css';
 
 const SideMenu = () => {
+  const [ifAdmin, setIfAdmin] = useState<boolean>(false);
+  const token: string | null = window.localStorage.getItem('token');
+
+  const verify = useCallback(async () => {
+    if (token) {
+      const res: any = await adminVerify(token);
+      if (!res.error_msg) setIfAdmin(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    verify();
+  }, [verify]);
+
   return (
     <SideBox className="side_box_menu">
       <Link href={`/home`} className="menu_link">
@@ -26,6 +51,9 @@ const SideMenu = () => {
       </div>
       <Link href={`/about`} className="menu_link">
         <IoMail className="menu_icon_box" /> Sobre nós
+      </Link>
+      <Link href={`/admin`} className={ifAdmin ? `menu_link` : 'disable'}>
+        <IoPerson className="menu_icon_box" /> Administrador
       </Link>
     </SideBox>
   );

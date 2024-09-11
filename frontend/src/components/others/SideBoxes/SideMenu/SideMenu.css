@@ -1,3 +1,7 @@
+.disable {
+  display: none;
+}
+
 .side_box_menu {
   flex-direction: column;
 }
@@ -6,6 +10,7 @@
   display: flex;
   gap: 10px;
   text-decoration: none;
+  font-size: 18px;
   color: #dacf00;
   margin: 10px;
   padding: 20px;
