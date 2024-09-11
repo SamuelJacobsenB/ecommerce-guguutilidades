@@ -52,7 +52,10 @@ const SideMenu = () => {
       <Link href={`/about`} className="menu_link">
         <IoMail className="menu_icon_box" /> Sobre nós
       </Link>
-      <Link href={`/admin`} className={ifAdmin ? `menu_link` : 'disable'}>
+      <Link
+        href={`/admin/modify`}
+        className={ifAdmin ? `menu_link` : 'disable'}
+      >
         <IoPerson className="menu_icon_box" /> Administrador
       </Link>
     </SideBox>
