@@ -56,3 +56,30 @@
   width: 26px;
   height: 26px;
 }
+
+@media screen and (min-width: 850px) {
+  .admin_content {
+    float: right;
+  }
+
+  .admin_nav {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #fef30e;
+    width: 20%;
+    height: 100%;
+  }
+
+  .menu_admin_icon {
+    margin-top: 20px;
+  }
+
+  .admin_nav_links {
+    gap: 120px;
+    margin: 60px 0px;
+    padding: 20px;
+  }
+}

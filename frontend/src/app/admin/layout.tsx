@@ -4,6 +4,7 @@ import AdminMenu from '@/components/others/AdminMenu/AdminMenu';
 import { useState, useEffect, useCallback } from 'react';
 import getAllProducts from '@/functions/getAllProducts';
 import { Product } from '@/types/ProductType';
+import './layout.css';
 
 export default function RootLayout({
   children,
@@ -29,7 +30,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body>
         <AdminMenu fixedProducts={fixedProducts} setProducts={setProducts} />
-        {children}
+        <div className="admin_content">{children}</div>
       </body>
     </html>
   );
