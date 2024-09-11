@@ -11,8 +11,9 @@ import getUserById from '@/functions/getUserById';
 import { SearchType } from '@/types/SearchType';
 
 const HomeLayout = (props: SearchType) => {
+  const [verified, setVerified] = useState<boolean>(false);
   const [picture, setPicture] = useState<string>('');
-  const [cart, setCart] = useState<string>();
+  const [cart, setCart] = useState<string | null>();
 
   const verify = useCallback(async () => {
     const token: string | null = localStorage.getItem('token');
@@ -27,6 +28,7 @@ const HomeLayout = (props: SearchType) => {
           .then((res) => {
             setPicture(res.picture);
             setCart(res.cart);
+            setVerified(true);
           })
           .catch(() => {
             console.log('Erro');
@@ -50,7 +52,9 @@ const HomeLayout = (props: SearchType) => {
       <Nav picture={picture} />
       <div className="interactive_boxes">
         <SideMenu />
-        {cart && <SideCart cart={cart} fixedProducts={props.fixedProducts} />}
+        {verified && (
+          <SideCart cart={cart} fixedProducts={props.fixedProducts} />
+        )}
       </div>
     </>
   );

@@ -147,3 +147,9 @@
   background-color: #fff200;
   text-decoration: underline;
 }
+
+.empty_cart {
+  font-size: 24px;
+  color: #dacf00;
+  margin: 30px;
+}
