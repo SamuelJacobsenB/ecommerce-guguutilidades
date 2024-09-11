@@ -79,13 +79,16 @@ const ProductInformations = () => {
       </Link>
       <div className="product_info">
         <div className="product_image">
-          <LoadImage src={picture} alt={name} width={420} height={560} />
+          <LoadImage src={picture} alt={name} width={400} height={540} />
         </div>
         <div className="product_info_box">
           <h1>{name}</h1>
           <p>{description}</p>
           <big>R$ {price}</big>
           <small>Categoria: {category}</small>
+          <button className="add_to_cart_button" onClick={addToCart}>
+            <FaCartPlus className="add_to_cart_icon" /> Adicionar ao carrinho
+          </button>
         </div>
       </div>
       <div className="add_to_cart" onClick={addToCart}>
