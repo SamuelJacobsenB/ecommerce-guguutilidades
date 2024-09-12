@@ -39,7 +39,7 @@
   text-align: center;
   color: #b11b00;
   font-size: 20px;
-  width: 90%;
+  width: 100%;
   padding: 10px;
   text-decoration: none;
   transition: 0.4s;
@@ -63,14 +63,16 @@
   }
 
   .admin_nav {
-    position: fixed;
+    position: sticky;
     top: 120px;
     left: 0;
     display: flex;
     justify-content: flex-start;
     background-color: #fef30e;
+    max-width: 200px;
     width: 20%;
-    height: 100%;
+    height: calc(100vh - 120px);
+    float: left;
   }
 
   .menu_admin_icon {

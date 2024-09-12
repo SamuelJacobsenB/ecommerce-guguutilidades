@@ -1,8 +1,10 @@
 .header_area {
+  position: sticky;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fef30e;
-  width: 100%;
+  width: 100vw;
   height: 120px;
 }
