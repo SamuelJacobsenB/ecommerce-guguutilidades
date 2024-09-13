@@ -3,6 +3,8 @@
 }
 
 .nav_bar {
+  position: fixed;
+  top: 120px;
   display: flex;
   justify-content: space-around;
   align-items: center;

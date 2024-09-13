@@ -1,3 +1,8 @@
+.admin_nav {
+  position: inherit;
+  top: 0;
+}
+
 .create_div {
   display: flex;
   align-items: center;

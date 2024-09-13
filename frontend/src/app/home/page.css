@@ -2,6 +2,10 @@
   display: none;
 }
 
+.home {
+  padding: 40px;
+}
+
 .home_title {
   background-color: white;
   font-size: 42px;

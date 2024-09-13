@@ -8,17 +8,18 @@ import AdminMenu from '@/components/others/AdminMenu/AdminMenu';
 import LoadImage from '@/components/others/LoadImage/LoadImage';
 import Button from '@/components/others/Button/Button';
 import adminVerify from '@/functions/adminVerify';
+import deleteProduct from '@/functions/deleteProduct';
 import { Product } from '@/types/ProductType';
 import './page.css';
 
 const Modify = () => {
   const router = useRouter();
+
   const [fixedProducts, setFixedProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
   const verify = useCallback(async () => {
     const token: string | null = window.localStorage.getItem('token');
-
     if (token) {
       const res: any = await adminVerify(token);
 
@@ -34,7 +35,15 @@ const Modify = () => {
     }
   }, []);
 
-  const deleteProduct = async (id: number) => {};
+  const handleDelete = async (id: number) => {
+    const token: string | null = window.localStorage.getItem('token');
+    if (token) {
+      const res: any = await deleteProduct(id, token);
+
+      if (res.success_msg) window.location.reload();
+      else console.log(res.error_msg);
+    } else router.push('/home');
+  };
 
   useEffect(() => {
     verify();
@@ -42,34 +51,36 @@ const Modify = () => {
   }, [getProducts, verify]);
 
   return (
-    <div>
+    <>
       <AdminMenu fixedProducts={fixedProducts} setProducts={setProducts} />
-      <h1 className="modify_title">Modificar produtos:</h1>
-      <div className="admin_product_list">
-        {products.map((product: Product) => {
-          const { id, picture, name } = product;
+      <div className="modify">
+        <h1 className="modify_title">Modificar produtos:</h1>
+        <div className="admin_product_list">
+          {products.map((product: Product) => {
+            const { id, picture, name } = product;
 
-          return (
-            <div className="admin_product" key={Number(id)}>
-              <LoadImage src={picture} alt={name} width={180} height={260} />
-              <h3 className="admin_product_name">{name}</h3>
-              <div className="admin_product_btn_area">
-                <Button type="button" colorType="blue">
-                  <IoPencil /> Editar
-                </Button>
-                <Button
-                  type="button"
-                  colorType="red"
-                  onClick={() => deleteProduct(id)}
-                >
-                  <IoTrash /> Deletar
-                </Button>
+            return (
+              <div className="admin_product" key={Number(id)}>
+                <LoadImage src={picture} alt={name} width={180} height={260} />
+                <h3 className="admin_product_name">{name}</h3>
+                <div className="admin_product_btn_area">
+                  <Button type="button" colorType="blue">
+                    <IoPencil /> Editar
+                  </Button>
+                  <Button
+                    type="button"
+                    colorType="red"
+                    onClick={() => handleDelete(Number(id))}
+                  >
+                    <IoTrash /> Deletar
+                  </Button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
