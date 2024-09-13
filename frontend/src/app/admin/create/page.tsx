@@ -12,7 +12,6 @@ import './page.css';
 
 const Create = () => {
   const router = useRouter();
-  const token: string | null = localStorage.getItem('token');
 
   const [picture, setPicture] = useState<string>('');
   const [name, setName] = useState<string>('');
@@ -29,6 +28,7 @@ const Create = () => {
   ];
 
   const verify = useCallback(async () => {
+    const token: string | null = localStorage.getItem('token');
     if (token) {
       const res: any = await adminVerify(token);
 
@@ -37,6 +37,7 @@ const Create = () => {
   }, []);
 
   const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
+    const token: string | null = localStorage.getItem('token');
     evt.preventDefault();
 
     if (token) {

@@ -64,7 +64,11 @@ const Modify = () => {
                 <LoadImage src={picture} alt={name} width={180} height={260} />
                 <h3 className="admin_product_name">{name}</h3>
                 <div className="admin_product_btn_area">
-                  <Button type="button" colorType="blue">
+                  <Button
+                    type="button"
+                    colorType="blue"
+                    onClick={() => router.push(`/admin/update/${id}`)}
+                  >
                     <IoPencil /> Editar
                   </Button>
                   <Button

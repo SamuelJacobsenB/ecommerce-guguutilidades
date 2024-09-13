@@ -1,0 +1,42 @@
+.admin_nav {
+  position: inherit;
+  top: 0;
+}
+
+.update_div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding: 20px;
+}
+
+.update_title {
+  font-size: 38px;
+  color: #ece000;
+  margin: 40px;
+}
+
+.update_form {
+  width: 100%;
+}
+
+@media screen and (min-width: 850px) {
+  .update_div {
+    width: calc(100vw -20%);
+    height: 100vh;
+    float: right;
+  }
+
+  .admin_nav {
+    top: 0;
+    height: 100vh;
+  }
+
+  .admin_content {
+    display: flex;
+    left: 0;
+  }
+}
