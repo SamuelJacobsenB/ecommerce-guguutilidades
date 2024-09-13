@@ -22,7 +22,7 @@ const ProductInformations = () => {
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [price, setPrice] = useState<number>();
-  const [category, setCategory] = useState<Category>();
+  const [category, setCategory] = useState<string>();
 
   const getProduct = useCallback(async () => {
     if (typeof params.id == 'string') {
@@ -50,7 +50,7 @@ const ProductInformations = () => {
           await updateUserCart(id.toString(), token)
             .then((res: any) => {
               if (res.error_msg) {
-                console.log('Error');
+                console.log(res.error_msg);
               } else {
                 router.push('/home');
               }

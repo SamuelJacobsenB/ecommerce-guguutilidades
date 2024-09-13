@@ -89,7 +89,7 @@ const SideCart = (props: CartType) => {
 
                 <div className="cart_info">
                   <div className="top_informations">
-                    <h3>{name}</h3>
+                    <h3 className="cart_product_name">{name}</h3>
                     <IoClose
                       className="remove_product"
                       onClick={async () => {

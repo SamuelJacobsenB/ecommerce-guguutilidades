@@ -16,9 +16,9 @@ import './SideMenu.css';
 
 const SideMenu = () => {
   const [ifAdmin, setIfAdmin] = useState<boolean>(false);
-  const token: string | null = window.localStorage.getItem('token');
 
   const verify = useCallback(async () => {
+    const token: string | null = window.localStorage.getItem('token');
     if (token) {
       const res: any = await adminVerify(token);
       if (!res.error_msg) setIfAdmin(true);
