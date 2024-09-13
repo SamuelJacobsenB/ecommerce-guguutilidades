@@ -6,6 +6,6 @@ export interface FormAreaType {
   labelText: string;
   inputPlaceholder: string;
   minLength?: number;
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  value: string | number | undefined;
+  setValue: Dispatch<SetStateAction<any>>;
 }

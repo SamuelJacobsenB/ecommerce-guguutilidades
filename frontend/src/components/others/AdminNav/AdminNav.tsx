@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { IoMenu, IoHome, IoPencil, IoAdd } from 'react-icons/io5';
+import './AdminNav.css';
 
 const AdminNav = () => {
   const [menuVisible, setMenuVisible] = useState<boolean>(false);

@@ -7,6 +7,7 @@ import getAllProducts from '@/functions/getAllProducts';
 import AdminMenu from '@/components/others/AdminMenu/AdminMenu';
 import LoadImage from '@/components/others/LoadImage/LoadImage';
 import Button from '@/components/others/Button/Button';
+import adminVerify from '@/functions/adminVerify';
 import { Product } from '@/types/ProductType';
 import './page.css';
 
@@ -14,6 +15,16 @@ const Modify = () => {
   const router = useRouter();
   const [fixedProducts, setFixedProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+
+  const verify = useCallback(async () => {
+    const token: string | null = window.localStorage.getItem('token');
+
+    if (token) {
+      const res: any = await adminVerify(token);
+
+      if (res.error_msg) router.push('/home');
+    } else router.push('/home');
+  }, []);
 
   const getProducts = useCallback(async () => {
     const allProducts: Product[] | undefined = await getAllProducts();
@@ -23,9 +34,12 @@ const Modify = () => {
     }
   }, []);
 
+  const deleteProduct = async (id: number) => {};
+
   useEffect(() => {
+    verify();
     getProducts();
-  }, [getProducts]);
+  }, [getProducts, verify]);
 
   return (
     <div>
@@ -43,7 +57,11 @@ const Modify = () => {
                 <Button type="button" colorType="blue">
                   <IoPencil /> Editar
                 </Button>
-                <Button type="button" colorType="red">
+                <Button
+                  type="button"
+                  colorType="red"
+                  onClick={() => deleteProduct(id)}
+                >
                   <IoTrash /> Deletar
                 </Button>
               </div>

@@ -5,5 +5,6 @@ export interface ButtonType {
   colorType: colorType;
   type: btnType;
   children: string | React.ReactNode;
+  onClick?(): void;
   className?: string;
 }

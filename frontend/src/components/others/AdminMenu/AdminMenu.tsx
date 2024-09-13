@@ -1,7 +1,6 @@
 import Header from '@/components/layout/header/Header';
 import AdminNav from '../AdminNav/AdminNav';
 import { SearchType } from '@/types/SearchType';
-import './AdminMenu.css';
 
 const AdminMenu = (props: SearchType) => {
   return (
