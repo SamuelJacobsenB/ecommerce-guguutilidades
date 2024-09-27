@@ -58,7 +58,7 @@ const Update = () => {
           picture,
           name,
           description,
-          price,
+          price: Number(price),
         };
 
         const res: any = await updateProduct(product, params.id, token);
